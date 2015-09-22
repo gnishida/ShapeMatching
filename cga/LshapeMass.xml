@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<rules version="2015.9" author="gen">
+	<!-- Attributes -->
+	<attr name="bldg_height" value="40"/>
+	<attr name="bldg_height_lower_ratio" value="0.5"/>
+	<attr name="bldg_upper_width_ratio" value="0.5"/>
+	
+	<!-- Initial Shape starting rule -->
+	<rule name="Lot">
+		<extrude height="bldg_height"/>
+		<copy name="Building"/>
+	</rule>
+	
+	<!-- split the building geometry into its facade components -->
+	<rule name="Building">
+		<split splitAxis="z">
+			<param type="relative" value="bldg_height_lower_ratio" name="LowerPart"/>
+			<param type="relative" value="1-bldg_height_lower_ratio" name="UpperPartFrame"/>
+		</split>
+	</rule>
+	<rule name="UpperPartFrame">
+		<split splitAxis="x">
+			<param type="relative" value="bldg_upper_width_ratio" name="UpperPart"/>
+			<param type="relative" value="1-bldg_upper_width_ratio" name="NIL"/>
+		</split>
+	</rule>
+</rules>

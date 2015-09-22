@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<rules version="2015.9" author="gen">
+	<!-- Attributes -->
+	<attr name="bldg_height" value="40"/>
+	
+	<!-- Initial Shape starting rule -->
+	<rule name="Lot">
+		<extrude height="bldg_height"/>
+		<copy name="Building"/>
+	</rule>
+</rules>
